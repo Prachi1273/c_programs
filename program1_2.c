@@ -1,0 +1,51 @@
+///////////////////////////////////////////////////////////////////////////
+// Problem Statement : Print 5 times "Marvellous" on screen
+/////////////////////////////////////////////////////////////////
+//                        Algorithm
+///////////////////////////////////////////////////////////////
+/*
+    START
+    create the function which contains a loop 
+    call the function in main
+    then loop from function is printing Marvellous 5 times 
+    END
+*/  
+//////////////////////////////////////////////////////////////
+//
+//  Function Name : Display()
+//  Description : loop which is printing our data
+//  Input: -
+//  output : String Marvellous
+//  Author : Prachi Anand Barve
+//  Date :  18/10/2022
+//
+///////////////////////////////////////////////////////////////
+
+#include<stdio.h>
+
+void Display()
+{
+   int i = 0;
+   for(i = 1; i<=5 ; i++)
+   {
+      printf("Marvellous\n");
+   }
+}
+
+int main()
+{
+   Display();
+   
+   return 0;
+}
+
+/////////////////////////////////////////////////////////////
+//
+// Result :
+//         Marvellous
+//         Marvellous
+//         Marvellous
+//         Marvellous
+//         Marvellous
+//
+/////////////////////////////////////////////////////////////
