@@ -1,0 +1,82 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+#pragma pack(1)
+struct node
+{
+	int no;
+	struct node* next;
+};
+
+typedef struct node NODE;
+typedef struct node* PNODE;
+typedef struct node** PPNODE;
+
+void InsertLast(PPNODE First,int data)
+{
+	PNODE newn = (PNODE)malloc(sizeof(NODE));
+	PNODE temp = *First;
+	
+	newn->no = data;
+	newn->next = NULL;
+	printf("Inserting....\n");
+	if(*First == NULL)
+	{
+		*First = newn;
+	}
+	else
+	{
+		while(temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+		temp->next = newn;
+		newn->next = NULL;
+	}
+}
+
+void Display(PNODE First)
+{
+	while(First != NULL)
+	{
+		printf("| %d |->",First->no);
+		First = First->next;
+	}
+	printf("\n");
+}
+
+int Addition (PNODE First)
+{
+	int iSum = 0;
+	while(First!=NULL)
+	{
+		iSum = iSum + (First->no);
+		First = First ->next;
+	}
+	
+	return iSum;
+}
+
+int main()
+{
+	PNODE Head = NULL;
+	int iRet = 0;
+	
+	InsertLast(&Head,11);
+	InsertLast(&Head,21);
+	InsertLast(&Head,51);
+	InsertLast(&Head,101);
+	Display(Head);
+	
+	InsertLast(&Head,111);
+	Display(Head);
+	
+	InsertLast(&Head,121);
+	Display(Head);
+	
+	iRet = Addition(Head);
+	
+	printf("Addition is : %d\n",iRet);
+	
+	return 0;
+}
