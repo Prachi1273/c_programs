@@ -1,35 +1,50 @@
 #include<stdio.h>
-#include<stdbool.h>
+#include<stdlib.h>
 
- bool checkeven(int ino)
- {
-     if((ino % 2) == 0)
-     {
-          return true;
-     }
-     else
-     {
-           return false;
-     }
- 
- }
- 
+void display(int* arr,int ino)
+{
+	int i =0;
+	printf("Enter values : \n");
+	for(i=0;i<ino;i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+}
+
+void selectionsort(int* arr,int ino)
+{
+	int icnt = 0,j=0,min=0,t;
+	for(icnt = 0;icnt<ino;icnt++)
+	{
+		min=icnt;
+		for(j=icnt+1;j<ino;j++)
+		{
+			if(j>=0 && arr[j] < arr[min])
+			{
+				min = j;
+			}
+		}
+		t = arr[icnt];
+		arr[icnt] = arr[min];
+		arr[min] = t;
+	}
+	printf("Enter values : \n");
+	int i =0;
+	for(i=0;i<ino;i++)
+	{
+		printf("%d\n",arr[i]);
+	}
+}
+
 int main()
 {
-     int ivalue = 0;
-     bool bret = false;     //=false it internally considered as 0
-     printf("Enter the no :\n");
-     scanf("%d",&ivalue);
-     
-     bret = checkeven(ivalue);
-     if(bret == true)
-     {
-        printf("It is even no\n");
-     }
-     else
-     {
-         printf("It is odd no\n");
-     }
-     
-     return 0;
+	int ino = 0;
+	printf("Enter size : \n");
+	scanf("%d",&ino);
+	
+	int*arr = (int*)malloc(ino*sizeof(int));
+	
+	display(arr,ino);
+	
+	selectionsort(arr,ino);
 }
