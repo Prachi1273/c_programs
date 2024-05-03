@@ -1,0 +1,27 @@
+1. What is demand paging?
+2. What is segmentation?
+3. What is paging?
+4. What are cpu scheduling criteria’s?
+5. What is scheduler? What are types of scheduler?
+6. Function of any long/short/medium scheduler.
+7. What is page fault?
+8. What is page hit?
+9. What is frame?
+10. What is page?
+11. What is waiting time?
+12. What is Turn around time?
+13. What is ready queue?
+14. Full form of MFU, LRU, FIFO, LFU
+15. What is shell programming?
+16. What is child process?
+17. What is parent process?
+18. What is system call? How many system calls are there?
+19. Question on any system call may asked
+20. What is gantt chart? What is burst time, arrival time?
+21. Function of nice() system call
+22. Function of fork(), sleep(), wait(), exit()
+23. What is orphan process?
+24. Difference between getpid() &amp; getppid()
+25. What is system call? What is process?
+26. Which scheduling algorithm is better? What is difference in between them
+27. Which page replacement algorithm is better? Why?
