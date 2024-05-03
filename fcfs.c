@@ -1,97 +1,85 @@
-//Program name – FCFS
-#include<stdio.h>
-#include<stdlib.h>
-#define MAX 10
-typedef struct PROCESS
-{
-	char name[20];
-	int tat,wt,at,bt,ct;
-}PROCESS;
+#include <stdio.h>
 
-PROCESS p[MAX];
-int n,i,j,k;
-float totaltat,totalwt,avgtat,avgwt;
+#define MAX_REQUESTS 20
 
-void sort()
-{
-	PROCESS p1;
-	for(i=0;i<n;i++)
-	{
-		for(j=i+1;j<n;j++)
-		{
-			if(p[j].at < p[i].at)
-			{
-				p1=p[j];
-				p[j]=p[i];
-				p[i]=p1;
+int requestQueue[MAX_REQUESTS];
+int currentHeadPosition;
+int totalHeadMovements;
 
-			}
-		}
-	}
+void initialize() {
+  // Initialize the request queue with some values
+  requestQueue[0] = 98;
+  requestQueue[1] = 183;
+  requestQueue[2] = 37;
+  requestQueue[3] = 122;
+  requestQueue[4] = 14;
+  requestQueue[5] = 124;
+  requestQueue[6] = 65;
+  requestQueue[7] = 67;
 
+  // Set the current head position and total head movements to 0
+  currentHeadPosition = 53;
+  totalHeadMovements = 0;
 }
 
-void getdata()
-{
-	printf("\nEnter the number of process : ");
-	scanf("%d",&n);
-	for(i=0;i<n;i++)
-	{
-		printf("\nEnter the process name : ");
-		scanf("%s",p[i].name);
-		printf("\nEnter the CPU arrival time : ");
-		scanf("%d",&p[i].at);
-		printf("\nEnter the Burst time : ");
-		scanf("%d",&p[i].bt);
-	}
-	sort();
+void fcfs() {
+  // Iterate over the request queue and calculate the total head movement
+  for (int i = 0; i < MAX_REQUESTS; i++) {
+    totalHeadMovements += abs(requestQueue[i] - currentHeadPosition);
+    currentHeadPosition = requestQueue[i];
+  }
 }
 
-void calculate()
-{
-	int time=0,i=0;
-	
-	printf("\n\n GanntChart :\n");
-	printf("---------------------------------------\n");
-	printf("|%d ",time);
-	
-	while(i<n)
-	{
+int main() {
+  initialize();
+  fcfs();
 
-		p[i].wt=time-p[i].at;
-		time=time+p[i].bt;
-		p[i].ct=time;
-		p[i].tat=p[i].bt+p[i].wt;
+  printf("Total head movements: %d\n", totalHeadMovements);
 
-		printf("%s ",p[i].name);
-		printf("%d|%d ",time,time);
-
-		totaltat+=p[i].tat;
-		totalwt+=p[i].wt;
-		i++;
-	}
-	printf("\n--------------------------------------\n\n");
-	avgtat=totaltat/n;
-
-	avgwt=totalwt/n;
+  return 0;
 }
 
-void display()
-{
-	printf("\n--------------------------------------------------------\n");
-	printf("Process ArrivalTime BurstTime TurnAroundTime WaitTime\n");
-	printf("---------------------------------------------------------\n");
-	for(i=0;i<n;i++)
-	printf("%s\t %d\t\t %d\t %d\t\t %d\n",p[i].name,p[i].at,p[i].bt,p[i].tat,p[i].wt);
-	printf("---------------------------------------------------------");
-	printf("\n\nTotal turn around time :%f",totaltat);
-	printf("\n\nTotal wait time :%f",totalwt);
-	printf("\n\nAverage turn around time :%f",avgtat);
-	printf("\n\nAverage waiting time :%f",avgwt);
+/*
+
+#include <stdio.h>
+
+#define MAX_REQUESTS 20
+
+int requestQueue[MAX_REQUESTS];
+int currentHeadPosition;
+int totalHeadMovements;
+
+void initialize() {
+  // Initialize the request queue with some values
+  requestQueue[0] = 98;
+  requestQueue[1] = 183;
+  requestQueue[2] = 37;
+  requestQueue[3] = 122;
+  requestQueue[4] = 14;
+  requestQueue[5] = 124;
+  requestQueue[6] = 65;
+  requestQueue[7] = 67;
+
+  // Set the current head position and total head movements to 0
+  currentHeadPosition = 53;
+  totalHeadMovements = 0;
 }
-void main()
-{
-	getdata();
-	calculate();
-	display();
+
+void fcfs() {
+  // Iterate over the request queue and calculate the total head movement
+  for (int i = 0; i < MAX_REQUESTS; i++) {
+    totalHeadMovements += abs(requestQueue[i] - currentHeadPosition);
+    currentHeadPosition = requestQueue[i];
+  }
 }
+
+int main() {
+  initialize();
+  fcfs();
+
+  printf("Total head movements: %d\n", totalHeadMovements);
+
+  return 0;
+}
+
+*/
